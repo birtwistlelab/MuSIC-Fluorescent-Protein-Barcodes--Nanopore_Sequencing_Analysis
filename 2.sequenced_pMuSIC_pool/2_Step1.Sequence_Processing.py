@@ -223,10 +223,10 @@ for key in good_alignment_pool_original.keys():
 print(good_alignment_pool.keys())
 print(len(good_alignment_pool))
 
-np.save('output/Step1_pool.npy', pool, allow_pickle=True)
-np.save('output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
-np.save('output/Step1_final_pool.npy', final_pool, allow_pickle=True)
-np.save('output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
-np.save('output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_pool.npy', pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_final_pool.npy', final_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
 
 
