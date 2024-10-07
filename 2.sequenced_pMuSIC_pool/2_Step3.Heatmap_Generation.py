@@ -29,7 +29,7 @@ data.to_excel('output/Step3.barcode_classification_matrix_for_20x20_heatmap.xlsx
 
 # now we have the 20x20 sample fraction matrix to classify the sample pMuSICs and the inferred barcodes
 
-rcParams['font.sans-serif'] = ['Arial']
+rcParams['font.sans-serif'] = ['DejaVu Sans']
 rcParams['font.family'] = 'sans-serif'
 
 plt.subplots(figsize=(12, 8))
