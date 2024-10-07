@@ -20,7 +20,7 @@ path = "/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/fastq_pass/"
 files = os.listdir(path)
 files.sort()
 
-os.makedirs("output/", exist_ok=True)
+os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/", exist_ok=True)
 
 original_pool = {}
 for file in files:
