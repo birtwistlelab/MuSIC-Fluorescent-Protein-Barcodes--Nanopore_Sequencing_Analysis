@@ -5,6 +5,9 @@ import pandas as pd
 import time
 import multiprocessing as mp
 
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+
 # step6: create the control sequence library for alignment
 fp_1 = "ATGGTgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgaggggcgagggcgagggcgatgccaccaacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgagccacggcgtgcagtgcttcgcccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcacctacaagacccgcgccgaggtgaagttcgagggcgacaccctagtgaaccgcatcgagctgaagggcgtcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaacttcaacagccacaacatctatatcatggccgtcaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacgtggaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacagccactacctgagcacccagtccgtgctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttccgcaccgccgccgggatcactctcgGCATGGACGAGCTGTACAAG"
 fp_2 = "ATGGTgtctaagggcgaagagctgattaaggagaacatgcacatgaagctgtacatggagggcaccgtggacaaccatcacttcaagtgcacatccgagggcgaaggcaagccctacgagggcacccagaccatgagaatcaaggtggtcgagggcggccctctccccttcgccttcgacatcctggctactagcttcctctacggcagcaagaccttcatcaaccacacccagggcatccccgacttcttcaagcagtccttccctgagggcttcacatgggagagagtcaccacatacgaagatgggggcgtgctgaccgctacccaggacaccagcctccaggacggctgcctcatctacaacgtcaagatcagaggggtgaacttcacatccaacggccctgtgatgcagaagaaaacactcggctgggaggccttcaccgagacactgtaccccgctgacggcggcctggaaggcagaaacgacatggccctgaagctcgtgggcgggagccatctgatcgcaaacgccaagaccacatatagatccaagaaacccgctaagaacctcaagatgcctggcgtctactatgtggactacagactggaaagaatcaaggaggccaacaacgagacatacgtcgagcagcacgaggtggcagtggccagatactgcgacctccctagcaaactggggcacaagcttaat"
@@ -47,10 +50,10 @@ for each_seq in cmv_fp:
         cmv_music.append(music_seq)
 
 cmv_music = np.array(cmv_music)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.cmv_music.npy', cmv_music)
+np.save(result_path + 'Step2.cmv_music.npy', cmv_music)
 
 # step7: align and score to cmv_music to minimize the global scoring errors
-final_good_read_pool = np.load('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_good_alignment_pool.npy', allow_pickle=True).item()
+final_good_read_pool = np.load(result_path + 'Step1_good_alignment_pool.npy', allow_pickle=True).item()
 
 aligner = Align.PairwiseAligner()
 aligner.mode = "global"
@@ -116,7 +119,7 @@ if __name__ == '__main__':
     for key, value in score_of_read.items():
         print(f"{key}: array of shape {value.shape}")
 
-    np.save("/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.score_of_read.npy", score_of_read, allow_pickle=True)
+    np.save(result_path + "Step2.score_of_read.npy", score_of_read, allow_pickle=True)
     print("now you have score_of_read stored!")
 
     # step8: create control barcode library for fp combo identification (324), once we have the index of the highest score,
@@ -148,7 +151,7 @@ if __name__ == '__main__':
         "mRuby3-tPT2A-mCerulean3(S83)", "mRuby3-tPT2A-CyOFP1(S59)", "mCardinal-tPT2A-mKate2(S26)",
         "miRFP670-tPT2A-mClover3(S67)"
     ]
-    np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.actual_sample_list.npy', actual_sample_list)
+    np.save(result_path + 'Step2.actual_sample_list.npy', actual_sample_list)
 
     sample_index_list = []
     barcode_info_list = []
@@ -162,8 +165,8 @@ if __name__ == '__main__':
     print("to verify the index list of actual sample barcodes:")
     print('barcode_info_list', barcode_info_list)
     print('actual_sample_list', actual_sample_list)
-    np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.sample_index_list.npy', sample_index_list)
-    np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.sample_barcode_info_list.npy', barcode_info_list)
+    np.save(result_path + 'Step2.sample_index_list.npy', sample_index_list)
+    np.save(result_path + 'Step2.sample_barcode_info_list.npy', barcode_info_list)
 
     score_of_reads_nested_list = []
     inferred_barcode_list = []
@@ -188,18 +191,18 @@ if __name__ == '__main__':
         inferred_barcode_name = ctrl_barcode[max_barcode_index][1]
         inferred_barcode_list.append(inferred_barcode_name)
 
-    np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.inferred_barcode_list.npy', inferred_barcode_list)
+    np.save(result_path + 'Step2.inferred_barcode_list.npy', inferred_barcode_list)
 
     # step10: calculate the percentage of each pMuSIC in 324 reference barcode
     score_of_reads_array = np.array(score_of_reads_nested_list)
     data = pd.DataFrame(score_of_reads_array)
-    data.to_excel('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.distribution_of_each_pMuSIC_for_20x324_heatmap.xlsx', index=False)
+    data.to_excel(result_path + 'Step2.distribution_of_each_pMuSIC_for_20x324_heatmap.xlsx', index=False)
 
     row_sums = data.sum(axis=1)
     percentage = np.round(data.div(row_sums, axis=0), decimals=3)
     print(percentage)
 
-    percentage.to_excel('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.pMuSIC_percentage_matrix(20x324).xlsx', index=False)
+    percentage.to_excel(result_path + 'Step2.pMuSIC_percentage_matrix(20x324).xlsx', index=False)
 
 
 
