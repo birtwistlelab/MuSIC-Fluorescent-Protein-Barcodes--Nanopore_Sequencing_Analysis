@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-score_of_read = np.load("output/Step2.score_of_read.npy")
+score_of_read = np.load("/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step2.score_of_read.npy")
 print(len(score_of_read))
 
 
@@ -35,7 +35,7 @@ for each_list in score_of_read:
     each_score_list[max_index] = 1
     score_nested_list.append(each_score_list)
 score_array = np.array(score_nested_list)
-np.save('output/Step3.inferred_score_array_of_pMuSIC_pool.npy', score_array)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step3.inferred_score_array_of_pMuSIC_pool.npy', score_array)
 
 # step10: calculate the percentage of each pMuSIC in 324 reference barcode
 sum_music = np.sum(score_array, axis=0)  # sum all reads to see the distribution
@@ -51,7 +51,7 @@ print(percentage)
 
 data = pd.DataFrame(percentage.reshape((18, 18)))
 
-data.to_excel('output/Step3.pMuSIC_percentage_matrix(18x18).xlsx', index=False)
+data.to_excel('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step3.pMuSIC_percentage_matrix(18x18).xlsx', index=False)
 
 fp_name = ["EBFP2", "mTagBFP2", "mT-Sapphire", "mAmetrine", "mCerulean3", "LSSmOrange", "mBeRFP", "mTFP1", "EGFP",
            "CyOFP1", "mClover3", "mVenus", "mPapaya", "mOrange2", "mRuby3", "mKate2", "mCardinal", "miRFP670"]
@@ -70,7 +70,7 @@ plt.xlabel('Second Fluorescent Protein', fontsize=18, labelpad=12)
 plt.ylabel('First Fluorescent Protein', fontsize=18, labelpad=10)
 
 
-filename = 'output/Step3.fig.2D heatmap for sequencing of pMuSIC pool.png'
+filename = '/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step3.fig.2D heatmap for sequencing of pMuSIC pool.png'
 plt.savefig(filename, transparent=True)
 plt.close()
 
