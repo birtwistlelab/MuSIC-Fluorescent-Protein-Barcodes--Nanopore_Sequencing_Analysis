@@ -14,13 +14,15 @@ actual_barcoded_samples = ['barcode01_S108', 'barcode02_S66', 'barcode03_S110', 
                           'barcode16_S71', 'barcode17_S101', 'barcode18_S83', 'barcode19_S59', 'barcode21_S26',
                           'barcode22_S67']
 
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+os.makedirs(result_path, exist_ok=True)
+
 # step1: decompress .gz files in the fastq_pass package
-path = "/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/fastq_pass/"
+path = os.path.join(project_root, 'fastq_pass/')
 
 files = os.listdir(path)
 files.sort()
-
-os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/", exist_ok=True)
 
 original_pool = {}
 for file in files:
@@ -223,10 +225,10 @@ for key in good_alignment_pool_original.keys():
 print(good_alignment_pool.keys())
 print(len(good_alignment_pool))
 
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_pool.npy', pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_final_pool.npy', final_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
+np.save(result_path + 'Step1_pool.npy', pool, allow_pickle=True)
+np.save(result_path + 'Step1_seq_pool.npy', seq_pool, allow_pickle=True)
+np.save(result_path + 'Step1_final_pool.npy', final_pool, allow_pickle=True)
+np.save(result_path + 'Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
+np.save(result_path + 'Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
 
 
