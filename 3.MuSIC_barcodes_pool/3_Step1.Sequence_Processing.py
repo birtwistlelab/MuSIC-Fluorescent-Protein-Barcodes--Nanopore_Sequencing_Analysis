@@ -6,11 +6,11 @@ from Bio import Align
 
 # step1: decompress .gz files in the fastq_pass package, since it's a mixed MuSIC barcode pool, we will use list instead
 # of dictionary here
-path = 'fastq_pass/'
+path = '/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/fastq_pass/'
 files = os.listdir(path)
 files.sort()
 
-os.makedirs("output/", exist_ok=True)
+os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/", exist_ok=True)
 
 pool = []
 for file in files:
