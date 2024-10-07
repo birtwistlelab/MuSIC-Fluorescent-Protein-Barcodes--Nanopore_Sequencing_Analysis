@@ -10,7 +10,7 @@ path = "/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/fastq_pass/"
 files = os.listdir(path)
 files.sort()
 
-os.makedirs("output/", exist_ok=True)
+os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/", exist_ok=True)
 fp_name = ["EBFP2", "mTagBFP2", "mT-Sapphire", "mAmetrine", "mCerulean3", "LSSmOrange", "mBeRFP", "mTFP1", "EGFP",
            "CyOFP1", "mClover3", "mVenus", "mPapaya", "mOrange2", "mRuby3", "mKate2", "mCardinal", "miRFP670"]
 
