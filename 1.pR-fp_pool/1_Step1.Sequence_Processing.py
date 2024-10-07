@@ -202,11 +202,11 @@ for key in sorted(final_pool.keys()):
     print("the length of wrong_seq_pool of " + key + " is " + str(len(wrong_seq_pool)))
     good_alignment_pool[key] = final_seq_pool_1
 
-np.save('output/Step1_pool.npy', pool, allow_pickle=True)
-np.save('output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
-np.save('output/Step1_final_pool.npy', final_pool, allow_pickle=True)
-np.save('output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
-np.save('output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_pool.npy', pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_final_pool.npy', final_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
 
 
 
