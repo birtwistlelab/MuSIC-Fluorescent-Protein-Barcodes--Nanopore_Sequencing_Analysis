@@ -5,6 +5,9 @@ import pandas as pd
 import time
 import multiprocessing as mp
 
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+
 # step6: create the control sequence library for alignment
 fp_1 = "ATGGTgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgaggggcgagggcgagggcgatgccaccaacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgagccacggcgtgcagtgcttcgcccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcacctacaagacccgcgccgaggtgaagttcgagggcgacaccctagtgaaccgcatcgagctgaagggcgtcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaacttcaacagccacaacatctatatcatggccgtcaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacgtggaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacagccactacctgagcacccagtccgtgctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttccgcaccgccgccgggatcactctcgGCATGGACGAGCTGTACAAG"
 fp_2 = "ATGGTgtctaagggcgaagagctgattaaggagaacatgcacatgaagctgtacatggagggcaccgtggacaaccatcacttcaagtgcacatccgagggcgaaggcaagccctacgagggcacccagaccatgagaatcaaggtggtcgagggcggccctctccccttcgccttcgacatcctggctactagcttcctctacggcagcaagaccttcatcaaccacacccagggcatccccgacttcttcaagcagtccttccctgagggcttcacatgggagagagtcaccacatacgaagatgggggcgtgctgaccgctacccaggacaccagcctccaggacggctgcctcatctacaacgtcaagatcagaggggtgaacttcacatccaacggccctgtgatgcagaagaaaacactcggctgggaggccttcaccgagacactgtaccccgctgacggcggcctggaaggcagaaacgacatggccctgaagctcgtgggcgggagccatctgatcgcaaacgccaagaccacatatagatccaagaaacccgctaagaacctcaagatgcctggcgtctactatgtggactacagactggaaagaatcaaggaggccaacaacgagacatacgtcgagcagcacgaggtggcagtggccagatactgcgacctccctagcaaactggggcacaagcttaat"
@@ -47,10 +50,10 @@ for each_seq in cmv_fp:
         cmv_music.append(music_seq)
 
 cmv_music = np.array(cmv_music)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step2.cmv_music.npy', cmv_music)
+np.save(result_path + 'Step2.cmv_music.npy', cmv_music)
 
 # step7: align and score to cmv_music to minimize the global scoring errors
-final_good_read_pool = np.load('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_good_alignment_pool.npy')
+final_good_read_pool = np.load(result_path + 'Step1_good_alignment_pool.npy')
 
 aligner = Align.PairwiseAligner()
 aligner.mode = "global"
@@ -119,6 +122,6 @@ if __name__ == '__main__':
     # original elements in final_good_read_pool, and the order will be preserved.
     score_of_read = np.concatenate(results, axis=0)
     print('the length of the scoring result is:', len(score_of_read))
-    np.save("/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step2.score_of_read.npy", score_of_read)
+    np.save(result_path + "Step2.score_of_read.npy", score_of_read)
     print("now you have score_of_read stored!")
 
