@@ -5,10 +5,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-inferred_barcode_list = np.load('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.inferred_barcode_list.npy')
-actual_sample_list = np.load('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.actual_sample_list.npy')
-sample_index_list = np.load('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.sample_index_list.npy')
-percentage = pd.read_excel('/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/Step2.pMuSIC_percentage_matrix(20x324).xlsx')
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+
+inferred_barcode_list = np.load(result_path + 'Step2.inferred_barcode_list.npy')
+actual_sample_list = np.load(result_path + 'Step2.actual_sample_list.npy')
+sample_index_list = np.load(result_path + 'Step2.sample_index_list.npy')
+percentage = pd.read_excel(result_path + 'Step2.pMuSIC_percentage_matrix(20x324).xlsx')
 
 # step11: analyze sample fraction
 sample_fraction = []
@@ -25,7 +28,7 @@ print(inferred_barcode_list)
 print(sample_fraction)
 data = pd.DataFrame(sample_fraction)
 
-data.to_excel('output/Step3.barcode_classification_matrix_for_20x20_heatmap.xlsx')
+data.to_excel(result_path + 'Step3.barcode_classification_matrix_for_20x20_heatmap.xlsx')
 
 # now we have the 20x20 sample fraction matrix to classify the sample pMuSICs and the inferred barcodes
 
@@ -44,10 +47,8 @@ ax.tick_params(axis='x', labelsize=10, rotation=90)
 plt.xlabel('Inferred', fontsize=18)
 plt.ylabel('Actual', fontsize=18)
 
-path = r'/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/output/'
-os.makedirs(path, exist_ok=True)
 filename = 'Step3.fig.S6C heatmap for sequencing of 20 sequenced pMuSIC pool.png'
-filepath = os.path.join(path, filename)
+filepath = os.path.join(result_path, filename)
 plt.savefig(filepath, transparent=True)
 plt.close()
 
