@@ -1,7 +1,7 @@
 Installation
 For specific Python packages, a requirements file has been provided at 'requirements.txt'.
 Assuming Pythonis installed, run the following command to install all necessary dependencies:
-'''python
+```bash
 pip install -r requirements.txt
 
 Usage
@@ -16,13 +16,13 @@ Running the Full Operation
 python run_all.py --experiment all --step all
 
 Running Individual Experiment:
-'''python
+```bash
 python run_all.py --experiment exp1  --step all
 python run_all.py --experiment exp2  --step all
 python run_all.py --experiment exp3  --step all
 
 Running Individual Scripts:
-'''python
+```bash
 python run_all.py --experiment exp1  --step Step1
 python run_all.py --experiment exp1  --step Step2
 python run_all.py --experiment exp1  --step Step3
