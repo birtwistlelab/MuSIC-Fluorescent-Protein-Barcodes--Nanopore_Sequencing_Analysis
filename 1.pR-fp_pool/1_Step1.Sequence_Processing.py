@@ -4,13 +4,17 @@ import numpy as np
 from Bio.Seq import Seq
 from Bio import Align
 
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+os.makedirs(result_path, exist_ok=True)
+
 # step1: decompress .gz files in the fastq_pass package
-path = "/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/fastq_pass/"
+
+path = os.path.join(project_root, 'fastq_pass/')
 
 files = os.listdir(path)
 files.sort()
 
-os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/", exist_ok=True)
 fp_name = ["EBFP2", "mTagBFP2", "mT-Sapphire", "mAmetrine", "mCerulean3", "LSSmOrange", "mBeRFP", "mTFP1", "EGFP",
            "CyOFP1", "mClover3", "mVenus", "mPapaya", "mOrange2", "mRuby3", "mKate2", "mCardinal", "miRFP670"]
 
@@ -202,11 +206,11 @@ for key in sorted(final_pool.keys()):
     print("the length of wrong_seq_pool of " + key + " is " + str(len(wrong_seq_pool)))
     good_alignment_pool[key] = final_seq_pool_1
 
-np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_pool.npy', pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_seq_pool.npy', seq_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_final_pool.npy', final_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
+np.save(result_path + 'Step1_pool.npy', pool, allow_pickle=True)
+np.save(result_path + 'Step1_seq_pool.npy', seq_pool, allow_pickle=True)
+np.save(result_path + 'Step1_final_pool.npy', final_pool, allow_pickle=True)
+np.save(result_path + 'Step1_final_seq_pool.npy', final_seq_pool, allow_pickle=True)
+np.save(result_path + 'Step1_good_alignment_pool.npy', good_alignment_pool, allow_pickle=True)
 
 
 
