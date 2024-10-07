@@ -44,13 +44,13 @@ print("the length of NheI_cmv_BamHI_kozak_fp1 is:")
 print(len(cmv_fp[0]))
 
 fp = np.array(fp)
-np.save('output/Step2_fp.npy', fp)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2_fp.npy', fp)
 
 cmv_fp = np.array(cmv_fp) # expected read without the sequence tail to MfeI site
-np.save('output/Step2_cmv_fp.npy', cmv_fp)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2_cmv_fp.npy', cmv_fp)
 
 # step7: align and score to cmv_fp to minimize the global scoring errors
-final_good_read_pool = np.load('output/Step1_good_alignment_pool.npy', allow_pickle=True).item()
+final_good_read_pool = np.load('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step1_good_alignment_pool.npy', allow_pickle=True).item()
 
 aligner = Align.PairwiseAligner()
 aligner.mode = "global"
@@ -103,11 +103,11 @@ for key in list(score_of_read.keys()):
 print(inferred_fp_list)
 score_of_reads_array = np.array(score_of_reads_nested_list)
 
-np.save('output/Step2.inferred_fp_list.npy', inferred_fp_list)
-np.save('output/Step2.actual_fp_list.npy', fp_name)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.inferred_fp_list.npy', inferred_fp_list)
+np.save('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.actual_fp_list.npy', fp_name)
 
 data = pd.DataFrame(score_of_reads_array)
-data.to_excel('output/Step2.distribution_of_each_barcode_for_18x18_heatmap.xlsx', index=False)
+data.to_excel('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.distribution_of_each_barcode_for_18x18_heatmap.xlsx', index=False)
 
 # step9: calculate the true positive rate
 row_sums = data.sum(axis=1)
@@ -120,4 +120,4 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 print(percentage)
 
-percentage.to_excel('output/Step2.final_percentage_for_18x18_heatmap.xlsx', index=False)
+percentage.to_excel('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.final_percentage_for_18x18_heatmap.xlsx', index=False)
