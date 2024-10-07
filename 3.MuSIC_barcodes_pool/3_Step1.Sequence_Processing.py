@@ -10,6 +10,8 @@ path = 'fastq_pass/'
 files = os.listdir(path)
 files.sort()
 
+os.makedirs("output/", exist_ok=True)
+
 pool = []
 for file in files:
     if os.path.splitext(file)[1] == ".gz":
