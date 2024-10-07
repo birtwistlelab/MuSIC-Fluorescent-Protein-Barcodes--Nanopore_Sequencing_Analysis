@@ -4,13 +4,15 @@ import numpy as np
 from Bio.Seq import Seq
 from Bio import Align
 
+project_root = os.getcwd()
+result_path = os.path.join(project_root, 'output/')
+os.makedirs(result_path, exist_ok=True)
+
 # step1: decompress .gz files in the fastq_pass package, since it's a mixed MuSIC barcode pool, we will use list instead
 # of dictionary here
-path = '/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/fastq_pass/'
+path = os.path.join(project_root, 'fastq_pass/')
 files = os.listdir(path)
 files.sort()
-
-os.makedirs("/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/", exist_ok=True)
 
 pool = []
 for file in files:
@@ -166,9 +168,9 @@ print("the length of final_seq_pool_2 is " + str(len(final_seq_pool_2)))
 print("the length of final_seq_pool_3 is " + str(len(final_seq_pool_3)))
 print("the length of wrong_seq_pool is " + str(len(wrong_seq_pool)))
 
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_pool.npy', pool)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_seq_pool.npy', seq_pool)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_final_pool.npy', final_pool)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_final_seq_pool.npy', final_seq_pool)
-np.save('/workspaces/MuSIC_barcodes_Unmixing/3.MuSIC_barcodes_pool/output/Step1_good_alignment_pool.npy', final_seq_pool_1)
+np.save(result_path + 'Step1_pool.npy', pool)
+np.save(result_path + 'Step1_seq_pool.npy', seq_pool)
+np.save(result_path + 'Step1_final_pool.npy', final_pool)
+np.save(result_path + 'Step1_final_seq_pool.npy', final_seq_pool)
+np.save(result_path + 'Step1_good_alignment_pool.npy', final_seq_pool_1)
 
