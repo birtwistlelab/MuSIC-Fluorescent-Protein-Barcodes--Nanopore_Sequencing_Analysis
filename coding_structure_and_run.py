@@ -16,7 +16,7 @@ def run_experiment(script):
     subprocess.run(['python', script], check=True)
     messagebox.showinfo('Success', f'Successfully ran: {script}')
   except subprocess.CalledProcessError as e:
-    messagebox.showerror('Error, f'Error running {script}: {e}')
+    messagebox.showerror('Error', f'Error running {script}: {e}')
 
 
 def create_tree_structure():
