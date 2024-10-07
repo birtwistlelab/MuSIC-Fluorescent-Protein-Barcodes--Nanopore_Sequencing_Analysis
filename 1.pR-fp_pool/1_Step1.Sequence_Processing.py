@@ -5,7 +5,7 @@ from Bio.Seq import Seq
 from Bio import Align
 
 # step1: decompress .gz files in the fastq_pass package
-path = "fastq_pass/"
+path = "/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/fastq_pass/"
 
 files = os.listdir(path)
 files.sort()
