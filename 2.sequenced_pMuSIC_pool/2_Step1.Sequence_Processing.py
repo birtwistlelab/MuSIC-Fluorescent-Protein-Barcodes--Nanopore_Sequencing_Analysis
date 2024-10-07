@@ -15,7 +15,7 @@ actual_barcoded_samples = ['barcode01_S108', 'barcode02_S66', 'barcode03_S110', 
                           'barcode22_S67']
 
 # step1: decompress .gz files in the fastq_pass package
-path = "fastq_pass/"
+path = "/workspaces/MuSIC_barcodes_Unmixing/2.sequenced_pMuSIC_pool/fastq_pass/"
 
 files = os.listdir(path)
 files.sort()
