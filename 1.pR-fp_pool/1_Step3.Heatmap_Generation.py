@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-inferred_fp_list = np.load('output/Step2.inferred_fp_list.npy')
-actual_fp_list = np.load('output/Step2.actual_fp_list.npy')
-percentage = pd.read_excel('output/Step2.final_percentage_for_18x18_heatmap.xlsx')
+inferred_fp_list = np.load('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.inferred_fp_list.npy')
+actual_fp_list = np.load('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.actual_fp_list.npy')
+percentage = pd.read_excel('/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step2.final_percentage_for_18x18_heatmap.xlsx')
 
 rcParams['font.sans-serif'] = ['Arial']
 rcParams['font.family'] = 'sans-serif'
@@ -23,6 +23,6 @@ colorbar.ax.tick_params(labelsize=14)
 plt.xlabel('Inferred', fontsize=18)
 plt.ylabel('Actual', fontsize=18)
 
-filename = 'output/Step3.fig.S6B heatmap for sequencing of pR-fp pool.png'
+filename = '/workspaces/MuSIC_barcodes_Unmixing/1.pR-fp_pool/output/Step3.fig.S6B heatmap for sequencing of pR-fp pool.png'
 plt.savefig(filename, transparent=True)
 plt.close()
