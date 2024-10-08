@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-project_root = os.getcwd()
+project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
 
 inferred_barcode_list = np.load(result_path + 'Step2.inferred_barcode_list.npy')
