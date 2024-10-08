@@ -14,7 +14,7 @@ actual_barcoded_samples = ['barcode01_S108', 'barcode02_S66', 'barcode03_S110', 
                           'barcode16_S71', 'barcode17_S101', 'barcode18_S83', 'barcode19_S59', 'barcode21_S26',
                           'barcode22_S67']
 
-project_root = os.getcwd()
+project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
 os.makedirs(result_path, exist_ok=True)
 
