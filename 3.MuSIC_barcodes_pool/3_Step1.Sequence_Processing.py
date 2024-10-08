@@ -4,7 +4,7 @@ import numpy as np
 from Bio.Seq import Seq
 from Bio import Align
 
-project_root = os.getcwd()
+project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
 os.makedirs(result_path, exist_ok=True)
 
