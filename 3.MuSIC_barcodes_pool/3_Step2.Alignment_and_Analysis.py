@@ -4,6 +4,7 @@ from Bio.Seq import Seq
 import pandas as pd
 import time
 import multiprocessing as mp
+import os
 
 project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
