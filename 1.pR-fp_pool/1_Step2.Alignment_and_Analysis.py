@@ -2,6 +2,7 @@ import numpy as np
 from Bio import Align
 from Bio.Seq import Seq
 import pandas as pd
+import os
 
 project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
