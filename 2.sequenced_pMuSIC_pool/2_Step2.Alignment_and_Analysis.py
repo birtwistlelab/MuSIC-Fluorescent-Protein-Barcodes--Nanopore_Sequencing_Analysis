@@ -5,7 +5,7 @@ import pandas as pd
 import time
 import multiprocessing as mp
 
-project_root = os.getcwd()
+project_root = os.path.dirname(os.path.abspath(__file__))
 result_path = os.path.join(project_root, 'output/')
 
 # step6: create the control sequence library for alignment
