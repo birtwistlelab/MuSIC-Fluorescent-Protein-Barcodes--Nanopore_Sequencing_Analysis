@@ -10,7 +10,10 @@ All original files and the result files were available upon request due to size 
 
 To use the project, you can use the run_all.py file in the terminal for both top-level direction for complete functionality, or you can test each experiment individually for specific tasks.
 All experiments and their steps are organized as shown in the structure tree. 
+
+
 ![structure tree](structure_tree.png)
+
 
 Running the Full Operation
 python run_all.py --experiment all --step all
