@@ -16,7 +16,9 @@ All experiments and their steps are organized as shown in the structure tree.
 
 
 ## **Running the Full Operation**
+```
 python run_all.py --experiment all --step all
+```
 
 ### **Running Individual Experiment:**
 ```
