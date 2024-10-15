@@ -39,7 +39,11 @@ To view Step 2 or Step 3 of one experiment, you should first run the previous st
 
 ## **Warning**
 The dataset used in this project is substantial, and certain steps may require extended processing time. 
+
 For instance, on a 2 GHz Quad-Core Intel Core i5 with 16 GB 3733 MHz LPDDR4X:
+
 Step 2 of Experiment 2 takes more than 12 hours to complete.
+
 Step 2 of Experiment 3 takes approximately 36 hours to complete.
+
 It is **strongly recommended** to run this code on a **High-Performance Computing (HPC) cluster**.
