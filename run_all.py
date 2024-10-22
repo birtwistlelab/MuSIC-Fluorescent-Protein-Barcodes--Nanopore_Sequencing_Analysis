@@ -25,7 +25,7 @@ def main():
     step_mapping = {
         'Step1': 'Step1.Sequence_Processing',
         'Step2': 'Step2.Alignment_and_Analysis',
-        'Step3': 'step3.Heatmap_Generation',
+        'Step3': 'Step3.Heatmap_Generation',
     }
 
     if args.experiment == 'all':
