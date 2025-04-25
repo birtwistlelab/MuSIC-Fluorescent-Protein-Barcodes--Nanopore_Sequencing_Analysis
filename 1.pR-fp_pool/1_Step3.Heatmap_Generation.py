@@ -26,6 +26,6 @@ colorbar.ax.tick_params(labelsize=14)
 plt.xlabel('Inferred', fontsize=18)
 plt.ylabel('Actual', fontsize=18)
 
-filename = result_path + 'Step3.fig.S6B heatmap for sequencing of pR-fp pool.png'
+filename = result_path + 'Step3.fig.S10A heatmap for sequencing of pR-fp pool.png'
 plt.savefig(filename, transparent=True)
 plt.close()
