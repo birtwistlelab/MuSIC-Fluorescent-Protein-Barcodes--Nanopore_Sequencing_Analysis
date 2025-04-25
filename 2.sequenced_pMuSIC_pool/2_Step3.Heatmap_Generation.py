@@ -30,7 +30,7 @@ data = pd.DataFrame(sample_fraction)
 
 data.to_excel(result_path + 'Step3.barcode_classification_matrix_for_20x20_heatmap.xlsx')
 
-# now we have the 20x20 sample fraction matrix to classify the sample pMuSICs and the inferred barcodes
+# Now we have the 20x20 sample fraction matrix to classify the sample pMuSICs and the inferred barcodes
 
 rcParams['font.sans-serif'] = ['DejaVu Sans']
 rcParams['font.family'] = 'sans-serif'
@@ -47,7 +47,7 @@ ax.tick_params(axis='x', labelsize=10, rotation=90)
 plt.xlabel('Inferred', fontsize=18)
 plt.ylabel('Actual', fontsize=18)
 
-filename = 'Step3.fig.S6C heatmap for sequencing of 20 sequenced pMuSIC pool.png'
+filename = 'Step3.fig.S10B heatmap for sequencing of 20 sequenced pMuSIC pool.png'
 filepath = os.path.join(result_path, filename)
 plt.savefig(filepath, transparent=True)
 plt.close()
